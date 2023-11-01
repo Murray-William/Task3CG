@@ -2,6 +2,8 @@ package me.math;
 
 // Это заготовка для собственной библиотеки для работы с линейной алгеброй
 public class Vector3f {
+    private float x, y, z;
+
     public Vector3f(float x, float y, float z) {
         this.x = x;
         this.y = y;
@@ -14,5 +16,28 @@ public class Vector3f {
         return Math.abs(x - other.x) < eps && Math.abs(y - other.y) < eps && Math.abs(z - other.z) < eps;
     }
 
-    float x, y, z;
+
+    public float getX() {
+        return x;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public float getZ() {
+        return z;
+    }
+
+    public void setZ(float z) {
+        this.z = z;
+    }
 }
