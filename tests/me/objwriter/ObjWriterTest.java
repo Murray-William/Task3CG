@@ -67,7 +67,7 @@ class ObjWriterTest {
 
     @Test
     void writeIntoFile() throws IOException {
-        String objFilePath = "D:\\javaProjects\\course2Half1\\CG\\Task3CG\\tests\\resources\\objwriter\\output\\test.obj";
+        String objFilePath = "..\\Task3CG\\tests\\resources\\objwriter\\output\\test.obj";
 
         ObjWriter.write(model, new File(objFilePath));
 
@@ -76,7 +76,7 @@ class ObjWriterTest {
 
     @Test
     void writeWithFilePath() throws IOException {
-        String objFilePath = "D:\\javaProjects\\course2Half1\\CG\\Task3CG\\tests\\resources\\objwriter\\output\\test.obj";
+        String objFilePath = "..\\Task3CG\\tests\\resources\\objwriter\\output\\test.obj";
 
         ObjWriter.write(model,objFilePath);
 
@@ -85,7 +85,7 @@ class ObjWriterTest {
 
     @Test
     void writeWithFileFolderPathAndName() throws IOException {
-        String objFileFolderPath = "D:\\javaProjects\\course2Half1\\CG\\Task3CG\\tests\\resources\\objwriter\\output\\";
+        String objFileFolderPath = "..\\Task3CG\\tests\\resources\\objwriter\\output\\";
         String objFileName = "test1";
 
         ObjWriter.write(model,objFileFolderPath, objFileName);
