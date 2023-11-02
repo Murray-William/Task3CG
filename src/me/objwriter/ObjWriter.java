@@ -48,16 +48,16 @@ public class ObjWriter {
 
             for (int i = 0; i < polygon.getVertexIndices().size(); i++) {
 
-                writer.write(" " + polygon.getVertexIndices().get(i));
+                writer.write(" " + (polygon.getVertexIndices().get(i) + 1));
 
                 if (polygon.getTextureVertexIndices().size() > i) {
-                    writer.write("/" + polygon.getTextureVertexIndices().get(i));
+                    writer.write("/" + (polygon.getTextureVertexIndices().get(i) + 1));
                     if (polygon.getNormalIndices().size() > i) {
-                        writer.write("/" + polygon.getNormalIndices().get(i));
+                        writer.write("/" + (polygon.getNormalIndices().get(i) + 1));
                     }
                 } else {
                     if (polygon.getNormalIndices().size() > i) {
-                        writer.write("//" + polygon.getNormalIndices().get(i));
+                        writer.write("//" + (polygon.getNormalIndices().get(i) + 1));
                     }
                 }
             }

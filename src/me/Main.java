@@ -4,9 +4,12 @@ import me.math.Vector2f;
 import me.math.Vector3f;
 import me.model.Model;
 import me.model.Polygon;
+import me.objreader.ObjReader;
 import me.objwriter.ObjWriter;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +51,11 @@ public class Main {
         Writer pw = new PrintWriter(System.out);
         ObjWriter.write(model, pw);
         pw.close();
+
+        Model model1 = ObjReader.read(Files.readString(Path.of("..\\Task3CG\\tests\\resources\\objwriter\\input\\WrapHand.obj")));
+        Writer writer = new FileWriter("..\\Task3CG\\tests\\resources\\objwriter\\output\\WrapHandOut.obj");
+        ObjWriter.write(model1, writer);
+        writer.close();
     }
 }
 

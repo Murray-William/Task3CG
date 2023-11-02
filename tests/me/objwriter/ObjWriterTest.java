@@ -4,7 +4,6 @@ import me.math.Vector2f;
 import me.math.Vector3f;
 import me.model.Model;
 import me.model.Polygon;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -51,8 +50,8 @@ class ObjWriterTest {
                 "vn 3.213000 4.200000 5.000000" + System.lineSeparator() +
                 "vn 6.000000 7.330000 8.123213" + System.lineSeparator() +
                 "vn 12.000000 3.330000 32.000000" + System.lineSeparator() +
-                "f 1/2/3 1/2/3 1/2/3" + System.lineSeparator() +
-                "f 2/3/4 2/3/4 2/3/4";
+                "f 2/3/4 2/3/4 2/3/4" + System.lineSeparator() +
+                "f 3/4/5 3/4/5 3/4/5";
     }
 
     @Test
@@ -147,16 +146,16 @@ class ObjWriterTest {
                 new Polygon(List.of(1, 2, 3, 10, 12), List.of(4, 5, 6, 10, 15), List.of(7, 8, 9, 10, 16)),
                 new Polygon(List.of(1, 2, 3), List.of(), List.of(7, 8, 9)),
                 new Polygon(List.of(1, 2, 3), List.of(), List.of()),
-                new Polygon(List.of(1, 2, 3), List.of(4, 5, 6), List.of()));
+                new Polygon(List.of(1, 2, 3, 4), List.of(4, 5, 6, 10), List.of()));
         StringWriter sw = new StringWriter();
 
         ObjWriter.writeFaces(polygons, sw);
         assertEquals(
-                "f 1/4/7 2/5/8 3/6/9" + System.lineSeparator() +
-                        "f 1/4/7 2/5/8 3/6/9 10/10/10 12/15/16" + System.lineSeparator() +
-                        "f 1//7 2//8 3//9" + System.lineSeparator() +
-                        "f 1 2 3" + System.lineSeparator() +
-                        "f 1/4 2/5 3/6" + System.lineSeparator(), sw.toString()
+                "f 2/5/8 3/6/9 4/7/10" + System.lineSeparator() +
+                        "f 2/5/8 3/6/9 4/7/10 11/11/11 13/16/17" + System.lineSeparator() +
+                        "f 2//8 3//9 4//10" + System.lineSeparator() +
+                        "f 2 3 4" + System.lineSeparator() +
+                        "f 2/5 3/6 4/7 5/11" + System.lineSeparator(), sw.toString()
         );
         sw.close();
     }
