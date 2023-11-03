@@ -45,7 +45,6 @@ public class ObjWriter {
     protected static void writeFaces(List<Polygon> polygons, Writer writer) throws IOException {
         for (Polygon polygon : polygons) {
             writer.write("f");
-
             for (int i = 0; i < polygon.getVertexIndices().size(); i++) {
 
                 writer.write(" " + (polygon.getVertexIndices().get(i) + 1));
