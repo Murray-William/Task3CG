@@ -12,22 +12,25 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Model  model =  new Model(new ArrayList<Vector3f>(List.of(new Vector3f(1.122f, 2, 3.2321f),
+        Locale.setDefault(Locale.US);
+       // какая то модель
+        Model  model =  new Model(new ArrayList<>(List.of(new Vector3f(1.122f, 2, 3.2321f),
                 new Vector3f(3.213f, 4.2f, 5),
                 new Vector3f(6, 7.33f, 8.123213f),
                 new Vector3f(60, -9.99f, 8.3f))),
-                new ArrayList<Vector2f>(List.of(new Vector2f(1.123f, 2f),
+                new ArrayList<>(List.of(new Vector2f(1.123f, 2f),
                         new Vector2f(3.31f, 4.2f),
                         new Vector2f(0.21f, 14f),
                         new Vector2f(22.1f, 45f))),
-                new ArrayList<Vector3f>(List.of(new Vector3f(1.122f, 2, -3.2321f),
+                new ArrayList<>(List.of(new Vector3f(1.122f, 2, -3.2321f),
                         new Vector3f(3.213f, 4.2f, 5),
                         new Vector3f(6, 7.33f, 8.123213f),
                         new Vector3f(12, 3.33f, 32f))),
-                new ArrayList<Polygon>(List.of(new Polygon(List.of(1, 1, 1), List.of(2, 2, 2), List.of(3, 3, 3)),
+                new ArrayList<>(List.of(new Polygon(List.of(1, 1, 1), List.of(2, 2, 2), List.of(3, 3, 3)),
                         new Polygon(List.of(2, 2, 2), List.of(3, 3, 3), List.of(4, 4, 4)))));
 
         // 1 вариант - указать путь к папке в которую нужно сохранить obj файл и дать ему название
@@ -47,15 +50,22 @@ public class Main {
         System.out.println(sw);
         sw.close();
 
-        // можно обернуть System.out в PrintWriter и сразу выводить на консоль
+        // можно обернуть System.out в PrintWriter и выводить на консоль
         Writer pw = new PrintWriter(System.out);
         ObjWriter.write(model, pw);
         pw.close();
 
-        Model model1 = ObjReader.read(Files.readString(Path.of("..\\Task3CG\\tests\\resources\\objwriter\\input\\WrapHand.obj")));
-        Writer writer = new FileWriter("..\\Task3CG\\tests\\resources\\objwriter\\output\\WrapHandOut.obj");
+
+        // проверка считывания записи моделей из репозитория
+        Model model1 = ObjReader.read(Files.readString(Path.of("..\\Task3CG\\tests\\resources\\objwriter\\input\\WrapHead.obj")));
+        Writer writer = new FileWriter("..\\Task3CG\\tests\\resources\\objwriter\\output\\WrapHead.obj");
         ObjWriter.write(model1, writer);
         writer.close();
+
+        Model model2 = ObjReader.read(Files.readString(Path.of("..\\Task3CG\\tests\\resources\\objwriter\\input\\WrapUpperTeeth.obj")));
+        Writer writer2 = new FileWriter("..\\Task3CG\\tests\\resources\\objwriter\\output\\WrapUpperTeeth.obj");
+        ObjWriter.write(model2, writer2);
+        writer2.close();
     }
 }
 
